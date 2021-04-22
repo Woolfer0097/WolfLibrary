@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" enctype="multipart/form-data">
+        <h1 class="font-weight-bold display-1 text-center">Добавление книги</h1>
+        <img src="/static/images/skins/standard-image.jpg" class="img-thumbnail" style="width: 200px; height: 200px">
+        <input type="file" class="form-control-file" id="photo" name="file">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(class="form-control") }}<br>
+            {% for error in form.title.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.book_author.label }}<br>
+            {{ form.book_author(class="form-control") }}<br>
+            {% for error in form.book_author.errors %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.genre.label }}<br>
+            {{ form.genre(class="form-select form-select form-select-lg mb-3") }}<br>
+        </p>
+        <div>{{ message }}</div>
+        <textarea id="mytextarea" class="m-3" name="text"></textarea>
+        <h1 class="font-weight-bold display-5 text-center my-2">Добавление файла книги (формат PDF)</h1>
+        <input type="file" class="form-control-file my-2" id="file_pdf" name="file_book" dataformatas="pdf">
+        <p class="m-2">{{ form.submit(type="submit", class="btn btn-primary") }}</p>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="post" enctype="multipart/form-data">
+        {% if current_user.user_avatar %}
+            <img src="static/images/avatars/{{ current_user.user_avatar }}"
+                 class="rounded float-end" alt="..." width="100px" height="100px">
+        {% else %}
+            <img src="static/images/avatars/new_account.png" class="rounded float-end"
+                 alt="..." width="50px" height="50px">
+        {% endif %}
+        <h2>Загрузка аватара пользователя</h2>
+        <input type="file" class="form-control-file bg-light my-2" id="photo" name="file">
+        <button type="submit" class="btn btn-primary">Отправить</button>
+    </form>
+{% endblock %}
